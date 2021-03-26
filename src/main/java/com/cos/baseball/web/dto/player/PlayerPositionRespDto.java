@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class PlayerPositionRespDto {
 	private String position;
-	private String 롯데;
-	private String NC;
-	private String 기아;
-	private String 해태;
+	private String lg;
+	private String lotte;
+	private String samsung;
 }

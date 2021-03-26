@@ -1,10 +1,15 @@
 package com.cos.baseball.domain.stadium;
 
+import java.sql.Timestamp;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.cos.baseball.domain.team.Team;
 
@@ -25,6 +30,9 @@ public class Stadium {
 	
 	private String name;
 	
-	@OneToOne(mappedBy = "stadium")
+	@OneToOne(mappedBy = "stadium", cascade = CascadeType.REMOVE)
 	private Team team;
+	
+	@CreationTimestamp
+	private Timestamp createDate;
 }

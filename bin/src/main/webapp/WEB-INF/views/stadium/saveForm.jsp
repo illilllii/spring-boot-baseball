@@ -6,6 +6,8 @@
 		<div class="form-group">
 			<input type="text" class="form-control" name="name" placeholder="구장이름">
 		</div>
+
+
 		<br />
 		<br />
 		<button type="submit" class="btn btn-primary">등록하기</button>

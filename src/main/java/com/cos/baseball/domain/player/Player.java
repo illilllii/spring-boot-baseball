@@ -1,11 +1,15 @@
 package com.cos.baseball.domain.player;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.cos.baseball.domain.team.Team;
 
@@ -26,10 +30,11 @@ public class Player {
 
 	private String name;
 	private String position;
-
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "teamId", insertable = false)
+	
 	@ManyToOne
 	@JoinColumn(name = "teamId")
 	private Team team;
+	
+	@CreationTimestamp
+	private Timestamp createDate;
 }

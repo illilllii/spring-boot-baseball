@@ -44,14 +44,11 @@ public class TeamController {
 	@PostMapping("/team")
 	public @ResponseBody String save(Team team) {
 		teamService.팀등록(team);
-		//System.out.println(team.getPlayers());
-		//team.getId()
 		return Script.href("등록성공", "/team");
 	}
 	
 	@DeleteMapping("/team/{id}")
 	public @ResponseBody CMRespDto<?> delete(@PathVariable int id) {
-		System.out.println(id);
 		teamService.삭제하기(id);
 		return new CMRespDto<>(1, null);
 	}

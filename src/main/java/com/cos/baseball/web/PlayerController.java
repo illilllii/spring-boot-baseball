@@ -16,6 +16,7 @@ import com.cos.baseball.service.PlayerService;
 import com.cos.baseball.service.TeamService;
 import com.cos.baseball.utils.Script;
 import com.cos.baseball.web.dto.CMRespDto;
+import com.cos.baseball.web.dto.player.PlayerPositionRespDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +26,7 @@ public class PlayerController {
 
 	private final PlayerService playerService;
 	private final TeamService teamServcie;
-	@GetMapping("/player")
+	@GetMapping({"/","/player"})
 	public String findAll(Model model) {
 		List<Player> players = playerService.선수목록보기();
 		
@@ -53,6 +54,13 @@ public class PlayerController {
 	public @ResponseBody CMRespDto<?> delete(@PathVariable int id) {
 		playerService.삭제하기(id);
 		return new CMRespDto<>(1, null);
+	}
+	
+	@GetMapping("/player/positionList")
+	public String positionList(Model model) {
+		List<PlayerPositionRespDto> dtos = playerService.포지션별선수목록보기();
+		model.addAttribute("dtos", dtos);
+		return "player/positionList";
 	}
 	
 	
